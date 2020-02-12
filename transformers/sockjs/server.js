@@ -48,6 +48,12 @@ module.exports = function server() {
   // the next tick).
   //
   this.service.on('connection', (socket) => {
+    // sockjs sometimes passes us null instead of a socket object
+    // so we need to guard against that. see:
+    // https://github.com/sockjs/sockjs-node/issues/121
+    // https://github.com/meteor/meteor/issues/10468
+    if (!socket) return;
+
     const headers = socket.headers.via;
 
     headers.via = headers._via;
