@@ -92,5 +92,10 @@
     "url-parse": "~1.1.7",
     "ws": "~2.1.0"
   },
-  "pre-commit": "test, integration"
+  "pre-commit": "test, integration",
+  "allowScripts": {
+    "pre-commit": false,
+    "es5-ext": false,
+    "spawn-sync": false
+  }
 }
